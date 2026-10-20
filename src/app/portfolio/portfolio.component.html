@@ -1,160 +1,293 @@
-<main class="portfolio-shell">
-  <nav class="top-nav">
-    <button class="brand" type="button" (click)="scrollTo('home')">
-      <span>AH</span>
-      <strong>Ammar Alhardan</strong>
-    </button>
+<main class="portfolio-page">
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
 
-    <div class="nav-links">
-      <button
-        *ngFor="let item of navItems"
-        type="button"
-        [class.active]="activeSection === item.id"
-        (click)="scrollTo(item.id)">
-        {{ item.label }}
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Main navigation">
+      <button class="brand" type="button" (click)="scrollTo('home')" aria-label="Go to homepage">
+        <span class="brand-mark">A<span>H</span><span class="brand-dot">.</span></span>
+        <span class="brand-caption">AMMAR<span> / DEV</span></span>
       </button>
+      <div class="desktop-nav">
+        <button *ngFor="let item of navItems" type="button" [class.active]="activeSection === item.id"
+          (click)="scrollTo(item.id)">{{ item.label }}</button>
+      </div>
+      <button class="nav-cta" type="button" (click)="scrollTo('contact')">LET'S TALK <span
+          aria-hidden="true">↗</span></button>
+      <button class="menu-toggle" type="button" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen"
+        aria-controls="mobile-navigation" [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-nav" id="mobile-navigation" *ngIf="menuOpen">
+      <button *ngFor="let item of navItems" type="button" (click)="scrollTo(item.id)">{{ item.label }}</button>
     </div>
-  </nav>
+  </header>
 
-  <section id="home" class="hero section-anchor">
-    <div class="hero-grid">
-      <div class="hero-content reveal">
-        <p class="kicker">Frontend Software Engineer · Doha, Qatar</p>
-        <h1>
-          Building
-          <span>Government & Enterprise</span>
-          Digital Platforms
+  <section class="hero section-anchor" id="home">
+    <canvas #heroCanvas class="particle-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <div class="container hero-layout">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-pulse"></span> AVAILABLE FOR OPPORTUNITIES <span
+            class="eyebrow-separator">//</span> DOHA, QATAR</div>
+        <p class="hero-intro">HELLO, WORLD. I'M AMMAR ALHARDAN</p>
+        <h1>Engineering <span class="gradient-text">digital</span><br>experiences<span class="terminal-dot">.</span>
         </h1>
-        <p class="hero-text">
-          I build scalable Angular applications for complex workflows, document management,
-          digital signatures, approval processes, and business-critical systems.
+        <div class="typing-line"><span class="code-prefix">&gt; </span><span>{{ typedText }}</span><span class="cursor"
+            aria-hidden="true">|</span></div>
+
+        <p class="hero-description">
+          Full Stack Software Engineer with 5+ years of experience building enterprise and government
+          applications using Angular, TypeScript, and .NET technologies. I specialize in REST API integration,
+          complex business workflows, and scalable application design — while expanding into Generative AI,
+          LLM integration, and Retrieval-Augmented Generation (RAG).
         </p>
-
-        <div class="hero-actions">
-          <a class="primary-btn" href="mailto:ammarhardann@gmail.com">Contact Me</a>
-          <a class="secondary-btn" href="/Ammar-AL-Hardan-Resume.pdf" download>
-            Download Resume
-          </a>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" type="button" (click)="scrollTo('projects')">Explore my work <span
+              aria-hidden="true">↗</span></button>
+          <a class="btn btn-outline" href="/Ammar-AL-Hardan-Resume.pdf" download>Download CV <span
+              aria-hidden="true">↓</span></a>
         </div>
-
-        <div class="hero-stack">
-          <span>Angular</span>
-          <span>TypeScript</span>
-          <span>RxJS</span>
-          <span>Enterprise Systems</span>
+        <div class="hero-socials"><span>FIND ME ON</span><a href="https://www.linkedin.com/in/ammar-hardan-6ba399213/"
+            target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:ammarhardann&#64;gmail.com">Email ↗</a>
         </div>
       </div>
-
-      <aside class="profile-card reveal delay-1">
-        <div class="profile-glow"></div>
-        <div class="profile-image">
-          <img src="/ammar-profile1.jpg" alt="Ammar Alhardan" onerror="this.style.display='none'" />
-          <span>AH</span>
+      <div class="hero-visual reveal">
+        <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+        <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+        <div class="visual-orbit orbit-three" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <div class="portrait-glow"></div>
+          <img src="/ammar-profile1.jpg" alt="Portrait of Ammar Alhardan"
+            (error)="$any($event.target).style.display='none'">
+          <span class="portrait-fallback" aria-hidden="true">AH</span>
         </div>
-        <h2>Ammar Alhardan</h2>
-        <p>Frontend Software Engineer</p>
-        <div class="profile-status">
-          <span></span>
-          Open to Qatar & GCC opportunities
+        <div class="floating-chip chip-angular"><span class="chip-icon">◈</span><span>ANGULAR<span
+              class="chip-sub">FRONTEND</span></span></div>
+        <div class="floating-chip chip-dotnet"><span class="chip-icon">⌘</span><span>.NET<span
+              class="chip-sub">BACKEND</span></span></div>
+        <div class="floating-chip chip-ai"><span class="chip-icon">✧</span><span>AI<span
+              class="chip-sub">EXPLORING</span></span></div>
+        <div class="visual-coordinate">SYSTEM STATUS: <span>ONLINE</span> // 25.2854° N</div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>SCROLL TO EXPLORE</span><span class="scroll-line" aria-hidden="true"></span></div>
+  </section>
+
+  <section class="stats-section container" aria-label="Quick facts">
+    <div class="stat-card reveal" *ngFor="let stat of stats"><strong>{{ stat.value }}</strong><span>{{ stat.label
+        }}</span></div>
+    <div class="stat-card stat-location reveal"><span class="green-dot"></span><span>Open to Qatar & GCC roles</span>
+    </div>
+  </section>
+
+  <section class="section container section-anchor" id="about">
+    <div class="section-top reveal"><span class="section-index">01 / ABOUT ME</span><span
+        class="section-rule"></span><span class="section-meta">THE ENGINEER BEHIND THE CODE</span></div>
+    <div class="about-layout">
+      <div class="about-heading reveal">
+        <h2>Code with <span class="gradient-text">purpose.</span><br>Design with impact.</h2>
+        <p>
+          I'm a Full Stack Software Engineer with 5+ years of experience building enterprise and government
+          applications using Angular, TypeScript, and .NET technologies. My expertise spans scalable frontend
+          architecture, REST API integration, enterprise workflows, and database-driven application development.
+          I'm currently expanding into Generative AI, LLM integration, RAG, and intelligent applications.
+        </p><button
+          type="button" class="text-link" (click)="scrollTo('contact')">Let's connect <span
+            aria-hidden="true">↗</span></button>
+      </div>
+      <div class="bento-grid">
+        <article *ngFor="let highlight of highlights; let i = index" class="bento-card reveal"
+          [class.bento-wide]="i === 0">
+          <div class="bento-icon">{{ highlight.icon }}</div>
+          <h3>{{ highlight.title }}</h3>
+          <p>{{ highlight.description }}</p><span class="bento-corner">0{{ i + 1 }}</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt section-anchor" id="experience">
+    <div class="container">
+      <div class="section-top reveal"><span class="section-index">02 / EXPERIENCE</span><span
+          class="section-rule"></span><span class="section-meta">MY PROFESSIONAL JOURNEY</span></div>
+      <div class="section-heading reveal">
+        <div>
+          <p class="mini-label">WHERE I'VE MADE AN IMPACT</p>
+          <h2>Built through <span class="gradient-text">experience.</span></h2>
         </div>
-      </aside>
+        <p>Hands-on experience delivering business-critical software across government and enterprise environments.</p>
+      </div>
+      <div class="timeline">
+        <article *ngFor="let job of experiences; let i = index" class="timeline-item reveal">
+          <div class="timeline-track"><span class="timeline-node"></span></div>
+          <div class="timeline-period">{{ job.period }}<span>{{ job.location }}</span></div>
+          <div class="timeline-body"><span class="job-index">POSITION / 0{{ i + 1 }}</span>
+            <h3>{{ job.role }}</h3>
+            <h4>{{ job.company }}</h4>
+            <ul>
+              <li *ngFor="let point of (isExperienceExpanded(i) ? job.points : job.points.slice(0, experiencePreviewCount))">{{ point }}</li>
+            </ul>
+            <button *ngIf="job.points.length > experiencePreviewCount"
+              type="button" class="show-more-btn"
+              [attr.aria-expanded]="isExperienceExpanded(i)"
+              (click)="toggleExperience(i)">
+              {{ isExperienceExpanded(i) ? 'Show less ↑' : 'Show more (' + (job.points.length - experiencePreviewCount) + ' additional points) ↓' }}
+            </button>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="metrics">
-    <article *ngFor="let metric of metrics" class="metric-card reveal">
-      <strong>{{ metric.value }}</strong>
-      <span>{{ metric.label }}</span>
-      <p>{{ metric.detail }}</p>
-    </article>
-  </section>
-
-  <section id="expertise" class="content-section section-anchor">
+  <section class="section container section-anchor" id="projects">
+    <div class="section-top reveal"><span class="section-index">03 / SELECTED WORK</span><span
+        class="section-rule"></span><span class="section-meta">FROM IDEAS TO APPLICATIONS</span></div>
     <div class="section-heading reveal">
-      <p class="kicker">Expertise</p>
-      <h2>Focused on complex frontend systems</h2>
-      <p>
-        Not just UI screens — I work on enterprise workflows, business rules,
-        performance, architecture, and production-ready user experiences.
-      </p>
+      <div>
+        <p class="mini-label">SELECTED WORK &amp; FUTURE BUILDS</p>
+        <h2>Projects that <span class="gradient-text">matter.</span></h2>
+      </div>
+      <p>Personal work and confidentiality-safe summaries of enterprise engineering experience.</p>
     </div>
-
-    <div class="service-grid">
-      <article *ngFor="let service of services" class="service-card reveal">
-        <div class="service-icon">{{ service.icon }}</div>
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-      </article>
+    <div class="project-filter-bar" role="group" aria-label="Filter projects by category">
+      <button *ngFor="let filter of projectFilters" type="button" class="project-filter-btn"
+        [class.active]="activeProjectFilter === filter"
+        [attr.aria-pressed]="activeProjectFilter === filter"
+        (click)="setProjectFilter(filter)">{{ filter }}</button>
     </div>
-  </section>
-
-  <section id="experience" class="content-section section-anchor">
-    <div class="section-heading reveal">
-      <p class="kicker">Experience</p>
-      <h2>Professional journey</h2>
-    </div>
-
-    <div class="timeline">
-      <article *ngFor="let item of experiences" class="timeline-card reveal">
-        <div class="timeline-date">{{ item.period }}</div>
-        <div class="timeline-content">
-          <h3>{{ item.company }}</h3>
-          <p class="role">{{ item.role }}</p>
-          <p class="location">{{ item.location }}</p>
-          <ul>
-            <li *ngFor="let point of item.points">{{ point }}</li>
+    <div class="projects-grid">
+      <article *ngFor="let project of filteredProjects" class="project-card reveal" [class.featured-project]="project.featured">
+        <div class="project-art">
+          <div class="art-grid" aria-hidden="true"></div>
+          <div class="art-orb" aria-hidden="true"></div>
+          <div class="project-art-content"><span class="art-label">{{ project.category }}</span><span class="art-symbol"
+              aria-hidden="true">{{ project.icon }}</span><strong>{{ project.title }}</strong><span
+              class="art-caption">{{ project.featured ? 'BUILDING THE FUTURE OF WORK' : 'ENTERPRISE SYSTEMS ENGINEERING'
+              }}</span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-heading"><span class="project-number">PROJECT / {{ project.number }}</span><span
+              *ngIf="project.featured" class="featured-label">★ FEATURED</span></div>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <ul class="feature-list">
+            <li *ngFor="let feature of project.features">{{ feature }}</li>
           </ul>
+          <div class="tags"><span *ngFor="let tech of project.stack">{{ tech }}</span></div>
+          <div class="project-links" *ngIf="project.github || project.demo"><a *ngIf="project.github"
+              [href]="project.github" target="_blank" rel="noopener noreferrer">Source code ↗</a><a *ngIf="project.demo"
+              [href]="project.demo" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div>
         </div>
       </article>
     </div>
+    <p class="confidential-note reveal">◈ Some professional projects are described at a high level to respect client and
+      organizational confidentiality.</p>
   </section>
 
-  <section id="projects" class="content-section section-anchor">
-    <div class="section-heading reveal">
-      <p class="kicker">Featured Projects</p>
-      <h2>Selected confidential project experience</h2>
+  <section class="section section-alt section-anchor" id="skills">
+    <div class="container">
+      <div class="section-top reveal"><span class="section-index">04 / TECH STACK</span><span
+          class="section-rule"></span><span class="section-meta">TOOLS OF THE TRADE</span></div>
+      <div class="section-heading reveal">
+        <div>
+          <p class="mini-label">MY DEVELOPMENT TOOLKIT</p>
+          <h2>Technology meets <span class="gradient-text">curiosity.</span></h2>
+        </div>
+        <p>Core production skills alongside technologies I'm actively learning and exploring.</p>
+      </div>
+      <div class="skills-grid">
+        <article *ngFor="let group of skillGroups" class="skill-card reveal">
+          <div class="skill-card-head"><span class="skill-icon">{{ group.icon }}</span>
+            <h3>{{ group.title }}</h3>
+          </div>
+          <div class="skill-tags"><span *ngFor="let item of group.items">{{ item }}</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section container section-anchor" id="ai">
+  <div class="section-top reveal">
+    <span class="section-index">05 / AI JOURNEY</span>
+    <span class="section-rule"></span>
+    <span class="section-meta">BUILDING INTELLIGENT APPLICATIONS</span>
+  </div>
+
+  <div class="section-heading reveal">
+    <div>
+      <p class="mini-label">MY NEXT ENGINEERING FRONTIER</p>
+      <h2>
+        Exploring the
+        <span class="gradient-text">AI-powered future.</span>
+      </h2>
+    </div>
+
+    <p>
+      Combining enterprise software engineering with
+      emerging AI technologies to build smarter,
+      more capable applications.
+    </p>
+  </div>
+
+  <div class="ai-journey-grid">
+    <article class="ai-journey-card reveal">
+      <span class="ai-journey-icon">✧</span>
+      <span class="ai-journey-status">LEARNING</span>
+      <h3>Generative AI & LLMs</h3>
       <p>
-        Project names are generalized due to confidentiality, but the responsibilities,
-        architecture, and business domains reflect real production experience.
+        Studying LLM APIs, prompt engineering,
+        token management, response handling,
+        and integration with web applications.
       </p>
-    </div>
+    </article>
 
-    <div class="project-grid">
-      <article *ngFor="let project of projects" class="project-card reveal">
-        <div class="project-category">{{ project.category }}</div>
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <div class="project-impact">{{ project.impact }}</div>
-        <div class="project-stack">
-          <span *ngFor="let tech of project.stack">{{ tech }}</span>
-        </div>
-      </article>
+    <article class="ai-journey-card reveal">
+      <span class="ai-journey-icon">◇</span>
+      <span class="ai-journey-status">EXPLORING</span>
+      <h3>Retrieval-Augmented Generation</h3>
+      <p>
+        Exploring document processing, embeddings,
+        vector search, semantic retrieval,
+        and source-grounded AI responses.
+      </p>
+    </article>
+
+    <article class="ai-journey-card reveal">
+      <span class="ai-journey-icon">⌘</span>
+      <span class="ai-journey-status">NEXT PROJECT</span>
+      <h3>AI Knowledge Assistant</h3>
+      <p>
+        Planning an Angular and .NET application
+        that connects enterprise documents
+        with LLM-powered search and question answering.
+      </p>
+    </article>
+  </div>
+</section>
+
+
+  <section class="contact-section section-anchor" id="contact">
+    <div class="container">
+      <div class="contact-panel reveal">
+        <div class="contact-grid" aria-hidden="true"></div><span class="contact-eyebrow"><span class="green-dot"></span>
+          HAVE A PROJECT OR OPPORTUNITY?</span>
+        <h2>Let's build something <span class="gradient-text">extraordinary.</span></h2>
+        <p>I'm open to Frontend, Angular, and Full Stack engineering opportunities in Qatar and across the GCC.</p>
+        <div class="contact-buttons"><a class="btn btn-primary" href="mailto:ammarhardann&#64;gmail.com">Send an email <span
+              aria-hidden="true">↗</span></a><button class="btn btn-outline" type="button" (click)="copyEmail()">{{
+            emailCopied ? 'Email copied ✓' : 'Copy email address' }}</button></div><a class="contact-address"
+          href="mailto:ammarhardann&#64;gmail.com">
+          ammarhardann&#64;gmail.com</a>
+      </div>
     </div>
   </section>
 
-  <section id="stack" class="content-section stack-section section-anchor">
-    <div class="section-heading reveal">
-      <p class="kicker">Tech Stack</p>
-      <h2>Tools I use to build production systems</h2>
-    </div>
-
-    <div class="skills-cloud reveal">
-      <span *ngFor="let skill of skills">{{ skill }}</span>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-section section-anchor reveal">
-    <p class="kicker">Contact</p>
-    <h2>Let’s build something reliable, scalable, and production-ready.</h2>
-    <div class="contact-actions">
-      <a href="mailto:ammarhardann&#64;gmail.com" class="primary-btn">
-        ammarhardann&#64;gmail.com
-      </a>
-      <a href="https://www.linkedin.com/in/ammar-hardan-6ba399213/?skipRedirect=true" target="_blank" class="secondary-btn">LinkedIn</a>
-    </div>
-  </section>
-
-  <footer>
-    © {{ currentYear }} Ammar Alhardan. Built with Angular.
+  <footer class="footer container">
+    <div class="footer-brand">AH<span>.</span> <small>ENGINEERED WITH INTENTION</small></div>
+    <p>© {{ currentYear }} Ammar Alhardan. Built with Angular.</p><button type="button" (click)="scrollTo('home')">BACK
+      TO TOP ↑</button>
   </footer>
 </main>
